@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<section class="blog-listing gray-bg">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-8 m-15px-tb">
+                    <div class="row">
+                        {% for i in object_list %}
+                        	<div class="col-sm-6">
+                            	<div class="blog-grid">
+	                                <div class="blog-img">
+	                                    <div class="date">
+	                                        <span>{{i.cr_date|date:'d'}}</span>
+	                                        <label>{{i.cr_date|date:'M'}}</label>
+	                                    </div>
+	                                    <a href="#">
+	                                        <img src="{{i.image.url}}" title="" alt="" style="width:100%; height: 180px;">
+	                                    </a>
+	                                </div>
+	                                <div class="blog-info">
+	                                    <h5><a href="#" >{{i.title}}</a></h5>
+	                                    <p>{{i.body|safe|slice:'0:80'}}</p>
+	                                    <div class="btn-bar">
+	                                        <a href="#" class="px-btn-arrow">
+	                                            <span>Read More</span>
+	                                            <i class="arrow"></i>
+	                                        </a>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+                        {% endfor %}
+
+                        {% if is_paginated %}    
+	                        <div class="col-12">
+	                            <ul class="pagination pagination-primary">
+			                        {% if page_obj.has_previous %}
+			                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>             
+			                        {% endif %}
+
+			                        {% for i in paginator.page_range %}
+			                            {% if page_obj.number == i %}
+			                                <li class="page-item active">
+			                                    <a class="page-link" href="#">{{i}}</a>
+			                                </li>
+			                            {% else %}
+			                                <li class="page-item">
+			                                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+			                                </li>
+			                            {% endif %}
+			                        {% endfor %}
+			                        {% if page_obj.has_next %}
+			                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+			                        {% endif %}
+			                    </ul>
+	                        </div>
+	                      {% endif %}
+                    </div>
+                </div>
+
+                {% include 'blog/sidebar.html' %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
