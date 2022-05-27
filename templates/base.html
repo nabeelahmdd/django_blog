@@ -7,11 +7,12 @@
 
 	<meta property="og:site_name" content="django-blog.com" />
 	<meta property="og:title" content="Home" />
-	<meta name="description" content="Home of TenniShop.ae" />
 	<meta name="description" property="og:description" content="Django blog site a fully functional blog application">
 	<meta name="keywords" content="blog, django-blog, nabeel blogs">
 	<meta name="author" content="Nabeel Ahmed">
+	{% block meta %}{% endblock %}
 	<title>
+		
 		{% block title %}{% endblock %} | Blog Site
 	</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
