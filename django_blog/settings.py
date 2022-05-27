@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 1
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -37,7 +38,9 @@ DJANGO_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',   
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',  
 ]
 
 THIRD_PARTY_APPS = [

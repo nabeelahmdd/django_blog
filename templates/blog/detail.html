@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
+{% block title %}{{object.title|slice:'0:8'}}{% endblock %}
+{% block meta %}
+<meta property="og:url" content="https://janowski.dev/blog/2020/04/05/Intresting-article" />
+<meta property="og:title" content="{{object.title}}" />
+<meta property="og:image" content="{{object.image.url}}" />
+<meta property="og:image:alt" content="{{object.title}}" />
+
+<!-- #Twitter Tags -->
+
+<meta name="twitter:image" content="{{object.image.url}}" />
+<meta property="twitter:image:alt" content="{{object.title}}" />
+<meta name="twitter:card" content="{{object.title}}" />
+<meta name="twitter:site" content="@NabeelAhmed" />
+{% endblock %}
 {% block content %}
 {% load static %}
 {% load widget_tweaks %}

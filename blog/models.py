@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
@@ -46,7 +47,8 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-
+    def get_absolute_url(self):
+        return reverse('article-detail', args=[self.slug])
 class Comment(models.Model):
     article = models.ForeignKey(
     	Article,on_delete=models.CASCADE,
