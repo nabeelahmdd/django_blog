@@ -1,6 +1,5 @@
 from django.db import models
 from tinymce.models import HTMLField
-
 # Create your models here.
 
 class Category(models.Model):
@@ -18,6 +17,7 @@ class Category(models.Model):
 class Article(models.Model):
 
     title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     image = models.ImageField(
     	null=True, upload_to='article_images'
     )
@@ -50,7 +50,7 @@ class Article(models.Model):
 class Comment(models.Model):
     article = models.ForeignKey(
     	Article,on_delete=models.CASCADE,
-        related_name='comments'
+        related_name='comments', null=True, blank=True
     )
     name = models.CharField(max_length=80)
     email = models.EmailField()

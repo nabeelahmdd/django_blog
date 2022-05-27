@@ -25,21 +25,21 @@
         </div>
         <div class="widget-body">
             <form class="card card-sm" method="get">
-                                <div class="card-body row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <i class="fas fa-search h4 text-body"></i>
-                                    </div>
-                                    <!--end of col-->
-                                    <div class="col">
-                                        <input name="search" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" value="{{ search }}">
-                                    </div>
-                                    <!--end of col-->
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" type="submit">Search</button>
-                                    </div>
-                                    <!--end of col-->
-                                </div>
-                            </form>
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                        <input name="search" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" value="{% if search %}{{ search }}{% endif %}">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-success" type="submit">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
         </div>
     </div>
     <!-- End Trending Post -->
@@ -54,19 +54,19 @@
             <div class="latest-post-aside media">
                 <div class="lpa-left media-body">
                     <div class="lpa-title">
-                        <h5><a href="#">{{i.title}}</a></h5>
+                        <h5><a href="{% url 'article-detail' i.slug %}">{{i.title}}</a></h5>
                     </div>
                     <div class="lpa-meta">
-                        <a class="name" href="#">
+                        <a class="name" href="{% url 'article-detail' i.slug %}">
                             Rachel Roth
                         </a>
-                        <a class="date" href="#">
+                        <a class="date" href="{% url 'article-detail' i.slug %}">
                             {{i.cr_date|date:'d'}} {{i.cr_date|date:'M'}} {{i.cr_date|date:'Y'}}
                         </a>
                     </div>
                 </div>
                 <div class="lpa-right">
-                    <a href="#">
+                    <a href="{% url 'article-detail' i.slug %}">
                         <img src="{{i.image.url}}" title="" alt="">
                     </a>
                 </div>
